@@ -32,7 +32,7 @@ module.exports = {
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
       key: DEPLOY_KEY,
-      'post-deploy': 'source ~/.nvm/nvm.sh && cd frontend && npm install && npm run build && pm2 startOrReload ecosystem.config.js',
+      'post-deploy': 'source ~/.nvm/nvm.sh && cd frontend && npm install && NODE_OPTIONS=--openssl-legacy-provider npm run build && pm2 startOrReload ecosystem.config.js',
     },
   },
 };
