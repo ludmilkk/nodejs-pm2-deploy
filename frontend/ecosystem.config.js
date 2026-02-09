@@ -15,13 +15,8 @@ module.exports = {
   apps: [
     {
       name: 'mesto-frontend',
-      script: 'serve',
-      env: {
-        PM2_SERVE_PATH: './build',
-        PM2_SERVE_PORT: 8081,
-        PM2_SERVE_SPA: 'true',
-        PM2_SERVE_HOMEPAGE: '/index.html',
-      },
+      script: 'node_modules/.bin/serve',
+      args: '-s build -l 8081',
     },
   ],
   deploy: {
@@ -32,7 +27,7 @@ module.exports = {
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
       key: DEPLOY_KEY,
-      'post-deploy': 'source ~/.nvm/nvm.sh && cd frontend && npm install && NODE_OPTIONS=--openssl-legacy-provider npm run build && pm2 startOrReload ecosystem.config.js',
+      'post-deploy': 'source ~/.nvm/nvm.sh && cd frontend && npm install && npm install serve && NODE_OPTIONS=--openssl-legacy-provider npm run build && pm2 startOrReload ecosystem.config.js',
     },
   },
 };
