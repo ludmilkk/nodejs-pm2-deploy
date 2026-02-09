@@ -7,6 +7,7 @@ const {
   DEPLOY_HOST,
   DEPLOY_REPO,
   DEPLOY_PATH,
+  DEPLOY_KEY,
   DEPLOY_REF = 'origin/master',
 } = process.env;
 
@@ -30,6 +31,7 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
+      key: DEPLOY_KEY,
       'post-deploy': 'source ~/.nvm/nvm.sh && cd frontend && npm install && npm run build && pm2 startOrReload ecosystem.config.js',
     },
   },
